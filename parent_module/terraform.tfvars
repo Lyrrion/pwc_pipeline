@@ -1,7 +1,5 @@
 resource_group = {
-  ##new confilict has to solve very esier way with out issue 
-
-
+  
   rg_1 = {
     name     = "Rg_moon"
     location = "East US"
@@ -29,16 +27,16 @@ resource_group = {
     allow_blob_public_access = false
     }
 
-    stg_2= {
-    name = "storage78542384"
-    resource_group_name = "Rg_sun"
-    location = "Central India"
-    account_replication_type = "LRS"
-    account_tier = "Standard"
-    public_network_access_enabled = true
-    min_tls_version = "TLS1_2"
-    allow_blob_public_access = true
-    }
+    # stg_2= {
+    # name = "storage78542384"
+    # resource_group_name = "Rg_sun"
+    # location = "Central India"
+    # account_replication_type = "LRS"
+    # account_tier = "Standard"
+    # public_network_access_enabled = true
+    # min_tls_version = "TLS1_2"
+    # allow_blob_public_access = true
+    # }
   }
 
 
@@ -51,13 +49,13 @@ virtual_network = {
     dns_servers         = ["10.0.0.4", "10.0.0.5"]
   }
 
-  vnet_2 = {
-    name                = "vnet-2"
-    location            = "Central India"
-    resource_group_name = "Rg_sun"
-    address_space       = ["10.1.0.0/24"]
-    dns_servers         = ["10.1.0.4", "10.1.0.5"]
-  }
+  # vnet_2 = {
+  #   name                = "vnet-2"
+  #   location            = "Central India"
+  #   resource_group_name = "Rg_sun"
+  #   address_space       = ["10.1.0.0/24"]
+  #   dns_servers         = ["10.1.0.4", "10.1.0.5"]
+  # }
 }
 
 subnet = {
@@ -75,19 +73,19 @@ subnet = {
     address_prefixes     = ["10.0.0.64/26"]
   }
 
-  "frontend_2" = {
-    name                 = "frontend_2"
-    resource_group_name  = "Rg_sun"
-    virtual_network_name = "vnet_2"
-    address_prefixes     = ["10.1.0.0/25"]
-  }
+  # "frontend_2" = {
+  #   name                 = "frontend_2"
+  #   resource_group_name  = "Rg_sun"
+  #   virtual_network_name = "vnet_2"
+  #   address_prefixes     = ["10.1.0.0/25"]
+  # }
 
-  "backend_2" = {
-    name                 = "backend_2"
-    resource_group_name  = "Rg_sun"
-    virtual_network_name = "vnet_2"
-    address_prefixes     = ["10.1.0.128/25"]
-  }
+  # "backend_2" = {
+  #   name                 = "backend_2"
+  #   resource_group_name  = "Rg_sun"
+  #   virtual_network_name = "vnet_2"
+  #   address_prefixes     = ["10.1.0.128/25"]
+  # }
 }
 
 network_security_group = {
@@ -102,17 +100,17 @@ network_security_group = {
     resource_group_name = "Rg_moon"
   }
 
-  "nsg_frontend_2" = {
-    name                = "nsg_frontend_2"
-    location            = "Central India"
-    resource_group_name = "Rg_sun"
-  }
+  # "nsg_frontend_2" = {
+  #   name                = "nsg_frontend_2"
+  #   location            = "Central India"
+  #   resource_group_name = "Rg_sun"
+  # }
 
-  "nsg_backend_2" = {
-    name                = "nsg_backend_2"
-    location            = "Central India"
-    resource_group_name = "Rg_sun"
-  }
+  # "nsg_backend_2" = {
+  #   name                = "nsg_backend_2"
+  #   location            = "Central India"
+  #   resource_group_name = "Rg_sun"
+  # }
 }
 
 subnet_nsg_map = {
@@ -125,14 +123,14 @@ subnet_nsg_map = {
     nsg_key    = "nsg_backend_1"
   }
 
-    "frontend-association-2" = {
-        subnet_key = "frontend_2"
-        nsg_key    = "nsg_frontend_2"
-    }
-    "backend-association-2" = {
-        subnet_key = "backend_2"
-        nsg_key    = "nsg_backend_2"
-    }
+    # "frontend-association-2" = {
+    #     subnet_key = "frontend_2"
+    #     nsg_key    = "nsg_frontend_2"
+    # }
+    # "backend-association-2" = {
+    #     subnet_key = "backend_2"
+    #     nsg_key    = "nsg_backend_2"
+    # }
 }
 
 
@@ -144,18 +142,18 @@ public_ip = {
     allocation_method   = "Static"
   }
 
-    "test_public_ip_2" = {
-        name                = "test_public_ip_2"
-        resource_group_name = "Rg_sun"
-        location            = "Central India"
-        allocation_method   = "Dynamic"
-    }
-    "bastion_public_ip" = {
-        name                = "bastion_public_ip"
-        resource_group_name = "Rg_moon"
-        location            = "East US"
-        allocation_method   = "Static"
-    }
+    # "test_public_ip_2" = {
+    #     name                = "test_public_ip_2"
+    #     resource_group_name = "Rg_sun"
+    #     location            = "Central India"
+    #     allocation_method   = "Dynamic"
+    # }
+    # "bastion_public_ip" = {
+    #     name                = "bastion_public_ip"
+    #     resource_group_name = "Rg_moon"
+    #     location            = "East US"
+    #     allocation_method   = "Static"
+    # }
 }
 
 network_interfaces = {
